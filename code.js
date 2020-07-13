@@ -40,6 +40,7 @@ function createELements(item){
 	let div = document.createElement("div");
 	let input = document.createElement("input");
 	let label = document.createElement("label");
+	let lNum = document.createElement("label");
 
 	div.setAttribute("class","check");
 	input.setAttribute("type","checkbox")
@@ -47,10 +48,14 @@ function createELements(item){
 	input.setAttribute("value", item.peso);
 
 	let textLabel = document.createTextNode(item.descricao);
+	let lText = document.createTextNode(item.numero);
 
 	label.appendChild(textLabel);
+	lNum.appendChild(lText);
 
 	div.appendChild(input);
+	
+	div.appendChild(lNum);
 	div.appendChild(label);
 
 	section.appendChild(div);

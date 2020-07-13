@@ -20,6 +20,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 20px ;
+    align-items: center;
     box-shadow: 0.5px 1px 20px 0px rgba(15, 10, 10, 0.2);
 }
 .header h1{
@@ -57,7 +58,8 @@ body {
 .nome {
     width: 300px;
 }
-.nome .input {
+.card .input {
+    width: 90% ;
     text-align: center;
     padding: 10px ;
     outline: none ;
@@ -67,6 +69,7 @@ body {
     font-size: 1em ;
     background-color: #BF6550;
 }
+
 .card .form {
     display: flex ;
     justify-content: center ;
@@ -83,6 +86,7 @@ body {
 }
 
 .section .check {
+    transition: 0.9s;
     display: flex;
     align-items: center;
     padding: 10px ;

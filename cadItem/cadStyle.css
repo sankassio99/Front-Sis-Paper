@@ -1,0 +1,28 @@
+
+/*
+PALETA DE CORES: 
+VERMELHO: #BF6550
+BRANCO: #F2F2F2
+PRETO : #0D0D0D
+AZUL CLARO : #05C7F2
+AZUL :#05AFF2
+*/
+.form {
+    width: 50% ;
+    display: flex;
+    margin: 2em auto ;
+    flex-direction: column;
+    justify-content: center;
+}
+.form .input {
+    font-size: 1em ;
+    padding: 13px ;
+    margin: 10px ;
+    outline: none ;
+    border: none ;
+    color: grey ;
+}
+
+.form .input:focus {
+    border: 1px solid #05C7F2 ;
+}
