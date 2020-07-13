@@ -18,22 +18,18 @@ const paper = {
 }
 /* Pegar dados DO ITEM VENDA PARA SABER SE FOI UMA VENDA OU NÃO */
 function analisar(){
-    
-    let venda = document.getElementsByName("check");
-
-    if ( venda[0].checked && venda[1].checked){
-       alert("Não pode marcar dois itens VENDA ");      
-    }else if ( venda[0].checked)//true
-    {
-        paper.venda = venda[0].value;
+    alert(global);
+    // let venda = document.getElementsByName("check");
+    paper.venda = global;
+    if ( global)//true
+    {      
         paper.nomeUser = document.getElementById("nomeAtendente").value ;
         paper.telefone = document.getElementById("telefoneCliente").value ;
         paper.proposta = document.getElementById("proposta").value ;
         paper.data_monitoria = new Date();
         getValues()
-    }else if ( venda[1].checked)//false
+    }else if ( !global)//false
     {
-        paper.venda = venda[1].value;
         paper.nomeUser = document.getElementById("nomeAtendente").value ;
         paper.telefone = document.getElementById("telefoneCliente").value ;
         paper.data_monitoria = new Date();
@@ -62,6 +58,9 @@ function ret()
           let res = this.responseText ;
           alert("O paper foi cadastrado com o seguinte id: "+res);
           let section = document.querySelector(".section").innerHTML = "";
+          document.querySelector("#btnSim").setAttribute("hidden","true");
+          document.querySelector("#btnNao").setAttribute("hidden","true");
+          showResume();
           createButton();
     }
 }
@@ -81,7 +80,16 @@ function createButton(){
 
     end.appendChild(button);
 }
+function showResume(){
+    let res = document.querySelectorAll(".res");
 
+    res[0].innerHTML = "<h3>Resumo do Paper Cadastrado</h3>";
+    res[1].innerHTML = "<label>Nome: "+paper.nomeUser+"</label>";
+    res[2].innerHTML = "<label>Telefone: "+paper.telefone+"</label>";
+    res[3].innerHTML = "<label>Proposta: "+paper.proposta+"</label>";
+    res[4].innerHTML = "<label>Potuação Final: "+paper.pontuacao+"</label>";
+
+}
 /* FAZENDO CALCULOS DOS ITENS DESCONTADOS */
 function getValues() {
     

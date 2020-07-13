@@ -21,6 +21,7 @@ function mostrar()
 		}
 		let data = JSON.parse(this.responseText);
 		// console.log(data);
+		document.querySelector(".section").innerHTML ="";
 		for (let i = 0; i < data.length; i++) {
 			item.id = data[i].id ;
 			item.numero = data[i].numero ;
@@ -29,6 +30,7 @@ function mostrar()
 			item.grupo = data[i].grupo ;
 			item.descricao = data[i].descricao ;
 			console.log(item);
+			
 			createELements(item);
 		}
 		
@@ -61,8 +63,23 @@ function createELements(item){
 	section.appendChild(div);
 
 }
+var global = null ;
+function venda(){
+	criaAjax("http://localhost:8080/Sis-Paper/api/itens/listar/1",mostrar);
+	global = true;
+	document.getElementById("proposta").setAttribute("placeholder","");
+	document.querySelector(".indicativo").innerHTML = "Venda" ;
+}
+function naoVenda(){
+	criaAjax("http://localhost:8080/Sis-Paper/api/itens/listar/2",mostrar);
+	global = false;
+	document.getElementById("proposta").setAttribute("placeholder","Não Contém");
+	document.querySelector(".indicativo").innerHTML = "Não Venda" ;
+}
 window.onload = () => {
-	criaAjax("http://localhost:8080/Sis-Paper/api/itens/listar",mostrar);
+	// criaAjax("http://localhost:8080/Sis-Paper/api/itens/listar",mostrar);
+	document.querySelector("#btnSim").addEventListener("click",venda);
+	document.querySelector("#btnNao").addEventListener("click",naoVenda);
 }		
 
 // window.onload = () =>{
