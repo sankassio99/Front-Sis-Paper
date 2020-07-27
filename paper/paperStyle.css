@@ -52,9 +52,7 @@ body {
     align-items: center;
     box-shadow: 1px 1px 5px grey;
 }
-.card span {
-    color: #0D0D0D ;
-}
+
 .nome {
     width: 300px;
 }
@@ -137,12 +135,17 @@ body {
 .btnMini {
     color: #f2f2f2;
     font-size: 0.9em ;
-    margin: 10px ;
-    padding: 1em ;
-    width: 30%;
+    margin: 5px ;
+    padding: 8px ;
+    width: 100%;
     outline: none ;
-    border: none ;
-    background-color: #05C7F2;
+    border: 1px solid #f2f2f2 ;
+    background-color: #BF6550;
     border-radius: 10px ;
     cursor: pointer;
 }
+.btnMini:hover {
+    color: #0d0d0d;
+    background-color: #f2f2f2;
+}
+

@@ -1,4 +1,5 @@
 
+/**Atraz de uma requisição ajax é enviado um metodo post para salvar o paper no banco de dados  */
 function ajaxPost(url,dados,funcao)
 {
     let ajax=new XMLHttpRequest();
@@ -16,9 +17,8 @@ const paper = {
     telefone:"",
     venda: true 
 }
-/* Pegar dados DO ITEM VENDA PARA SABER SE FOI UMA VENDA OU NÃO */
+/* ANALISA SE O TIPO DO PAPAER É VENDA OU NÃO */
 function analisar(){
-    alert(global);
     // let venda = document.getElementsByName("check");
     paper.venda = global;
     if ( global)//true
@@ -27,30 +27,28 @@ function analisar(){
         paper.telefone = document.getElementById("telefoneCliente").value ;
         paper.proposta = document.getElementById("proposta").value ;
         paper.data_monitoria = new Date();
-        getValues()
+        verificaNull(paper);
     }else if ( !global)//false
     {
         paper.nomeUser = document.getElementById("nomeAtendente").value ;
         paper.telefone = document.getElementById("telefoneCliente").value ;
         paper.data_monitoria = new Date();
         paper.proposta = null ;
-        getValues()
+        verificaNull(paper);
     }
   
 }
+/**Verifica se o usuario não esqueceu de preecher nenhum campo  */
+function verificaNull(paper){
+ 
+    if(paper.nomeUser==undefined || paper.telefone==undefined 
+        || paper.nomeUser=='' ||paper.telefone==''){
+        alert("Preencha Todos os campos Disponiveis");
+    }else {
+        getValues();
+    }
+}
 
-/* PEGAR DADOS DOS INPUTS TEXT */
-// function getText(){
-//     paper.nomeUser = document.getElementById("nomeAtendente").value ;
-//     paper.telefone = document.getElementById("telefoneCliente").value ;
-//     if(paper.venda){
-//         alert("Paper true")
-//         paper.proposta = document.getElementById("proposta").value ;
-//     }else{
-//         alert("Paper False")
-//         paper.proposta = null ;
-//     }   
-// }
 function ret()
 {
     if(this.readyState===4&&this.status===200)
@@ -65,6 +63,7 @@ function ret()
     }
 }
 
+/*cRIA O BOTAO QUE DA A OPÇÃO DE CRIAR UM NOVO PAPER */
 function createButton(){
     let end = document.querySelector(".end");
     document.querySelector("#btnFinalizar").setAttribute("hidden","true");
@@ -80,6 +79,7 @@ function createButton(){
 
     end.appendChild(button);
 }
+/**QUANDO É FINALIZADO O PAPER, ESSA FUNÇÃO MOSTRA O RESUMO DO PAPER CADASTRADO */
 function showResume(){
     let res = document.querySelectorAll(".res");
 
@@ -105,6 +105,15 @@ function getValues() {
     paper.pontuacao = total ;
     let paperJson = JSON.stringify(paper);
     ajaxPost("http://localhost:8080/Sis-Paper/api/itens/paper",paperJson,ret);   
+}
+
+function getTotal(){
+    let valores = document.querySelectorAll("#checkbox").value ;
+    let total = 0 ;
+    for (let i = 0; i < valores.length; i++) {
+        total = parseInt(valores[i]);   
+    }
+    return total ;
 }
 
 

@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family:  Arial ;
+}
+
+/*
+PALETA DE CORES: 
+VERMELHO: #BF6550
+BRANCO: #F2F2F2
+PRETO : #0D0D0D
+AZUL CLARO : #05C7F2
+AZUL :#05AFF2
+*/
+
+body {
+    background-color: #f2f2f2;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px ;
+    align-items: center;
+    box-shadow: 0.5px 1px 20px 0px rgba(15, 10, 10, 0.2);
+}
+.header h1{
+    
+    color: #0d0d0d;
+    font-size: 4em ;
+}
+.header a .homeImg{
+    width: 40px ;
+}
+.botoes {
+    display: flex;
+    justify-content: center;
+    margin: 2em auto ;
+}
+.btn {
+    color: #f2f2f2;
+    font-size: 20px ;
+    margin: 10px ;
+    padding: 0.5em ;
+    width: 280px ;
+    outline: none ;
+    border: none ;
+    background-color: #05C7F2;
+    border-radius: 10px ;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #05AFF2;
+}
+
+
+/*SECTION   */
+.section {
+    margin: 0 auto ;
+    width: 80%;
+}
